@@ -27,16 +27,16 @@ export default function Contact() {
     } catch { setStatus("error"); }
   };
 
-  const inputClass = "w-full bg-transparent border-b border-white/20 py-4 text-white text-center placeholder:text-white/30 focus:border-[#8b5cf6] focus:outline-none transition-colors";
+  const inputClass = "w-full bg-transparent border-b border-white/20 py-3 md:py-4 text-white text-center placeholder:text-white/30 focus:border-[#8b5cf6] focus:outline-none transition-colors text-sm md:text-base";
 
   return (
-    <section id="contact" className="min-h-screen py-20 flex items-center justify-center" ref={ref}>
+    <section id="contact" className="min-h-screen py-16 md:py-20 flex items-center justify-center" ref={ref}>
       <div className="w-full max-w-2xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold tracking-tight text-center mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-center mb-4 md:mb-6"
         >
           Let&apos;s join <span className="text-[#8b5cf6]">forces</span>
         </motion.h2>
@@ -45,7 +45,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-xl text-white/50 mb-4 text-center"
+          className="text-base md:text-xl text-white/50 mb-4 text-center"
         >
           As long as there&apos;s room to turn things up a notch, I&apos;m in.
         </motion.p>
@@ -55,7 +55,7 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="block text-[#8b5cf6] hover:underline mb-12 text-center"
+          className="block text-[#8b5cf6] hover:underline mb-10 md:mb-12 text-center text-sm md:text-base"
         >
           atriyadipankar@gmail.com
         </motion.a>
@@ -65,20 +65,20 @@ export default function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
           onSubmit={handleSubmit}
-          className="space-y-6"
+          className="space-y-5 md:space-y-6"
         >
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-4 md:gap-6">
             <input type="text" placeholder="First name" required value={formData.firstName} onChange={(e) => setFormData({...formData, firstName: e.target.value})} className={inputClass} />
             <input type="text" placeholder="Last name" required value={formData.lastName} onChange={(e) => setFormData({...formData, lastName: e.target.value})} className={inputClass} />
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <input type="email" placeholder="Email address" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className={inputClass} />
             <input type="tel" placeholder="Phone number" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className={inputClass} />
           </div>
           <input type="text" placeholder="Company (optional)" value={formData.company} onChange={(e) => setFormData({...formData, company: e.target.value})} className={inputClass} />
           <textarea placeholder="How can I help you?" required rows={3} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className={`${inputClass} resize-none`} />
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <select value={formData.budget} onChange={(e) => setFormData({...formData, budget: e.target.value})} className={`${inputClass} bg-transparent cursor-pointer`}>
               <option value="" className="bg-[#0a0a0f]">Expected budget</option>
               <option value="10-30k" className="bg-[#0a0a0f]">$10K - $30K</option>
@@ -100,7 +100,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="inline-flex items-center gap-3 text-lg tracking-wider uppercase hover:text-[#8b5cf6] transition-colors disabled:opacity-50"
+              className="inline-flex items-center gap-3 text-base md:text-lg tracking-wider uppercase hover:text-[#8b5cf6] transition-colors disabled:opacity-50"
             >
               {status === "loading" ? (
                 <><Loader2 className="w-5 h-5 animate-spin" /> Sending...</>
